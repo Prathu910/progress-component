@@ -4,6 +4,22 @@ function ProgressBar() {
   const [duration, setDuration] = useState<number>(1);
   const [progress, setProgress] = useState<number>(0);
 
+  const getColors = () => {
+    const number = Number(progress.toFixed());
+
+    if (number > 0 && number <= 20) {
+      return 'bg-red-300'
+    } else if (number > 20 && number <= 40) {
+      return 'bg-orange-300'
+    } else if (number > 40 && number <= 60) {
+      return 'bg-yellow-300'
+    } else if (number > 60 && number <= 80) {
+      return 'bg-lime-300'
+    } else {
+      return 'bg-green-300'
+    }
+  }
+
   const handleStartProgress = () => {
     const increamentBy: number = (0.1 * 100) / duration;
     const totalIncrements: number = duration / 0.1;
@@ -38,7 +54,7 @@ function ProgressBar() {
         </div>
         <div className="w-full h-[30px] border border-gray-400 rounded-full relative">
           <div
-            className={`h-full bg-green-300 rounded-full transition-all duration-100`}
+            className={`h-full ${getColors()} rounded-full transition-all duration-100`}
             style={{ width: `${progress}%` }}
           ></div>
           <span className="absolute text-sm font-bold top-1 left-[50%]">
