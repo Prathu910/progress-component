@@ -43,6 +43,7 @@ function ProgressBar() {
             value={duration}
             onChange={(e) => setDuration(Number(e.target.value))}
             disabled={progress >= 100 ? false : progress !== 0 ? true : false}
+            min={1}
           />
           <button
             className="!bg-red-400 text-white font-semibold disabled:!bg-gray-300"
